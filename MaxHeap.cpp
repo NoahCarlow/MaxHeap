@@ -74,12 +74,19 @@ void MaxHeap::maxHeapify(Project * otherList, int index)
 
 void MaxHeap::create(int n)
 {
-  // Initalizes properties of projectList
-  currentSize = 0;
-  maxSize = n;
+  if(n > 0)
+  {
+    // Initalizes properties of projectList
+    currentSize = 0;
+    maxSize = n;
 
-  // Allocated memory for the Project vector, sets to size n
-  projectList = new Project[n];
+    // Allocated memory for the Project array, sets to size maxSize
+    projectList = new Project[maxSize];
+  }
+  else
+  {
+    cout << "Error: size has to be a positive integer.";
+  }
 }
 
 // TODO -buildMaxHeap(Project * otherList, int sizeOfOtherList) needs to copy the 
