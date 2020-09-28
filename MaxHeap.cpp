@@ -105,6 +105,36 @@ void MaxHeap::buildMaxHeap(Project * otherList, int sizeOfOtherList)
   {
     maxHeapify(otherList, i);
   }
+
+  currentSize = sizeOfOtherList; // sets the current size
+}
+
+// insert new project
+void MaxHeap::maxHeapInsert(string newProjectName, int newCost, string print)
+{
+  Project newProject; // creates new project
+
+  newProject.cost = newCost;
+  newProject.projName = newProjectName;
+
+  if(print == "yes")
+  {
+    cout << "Before Max Extraction:" << endl;
+    printMaxHeap();
+  }
+
+  currentSize += 1; // current size will increase since we are adding a project
+  maxSize += 1; // max size will increase since we are adding a project
+
+  projectList[maxSize] = newProject; // sets the last node equal to the new project obj
+  maxHeapify(projectList, maxSize); // Heapifys the last node we inserted
+
+  if(print == "yes")
+  {
+    cout << "After Max Extraction:" << endl;
+    printMaxHeap();
+  }
+  
 }
 
 // extract max returns the max cost of all projects and deletes project.
@@ -114,6 +144,7 @@ int MaxHeap::extractMax(string print)
 
   if(print == "yes")
   {
+    cout << "Before Max Extraction:" << endl;
     printMaxHeap();
   }
 
@@ -124,10 +155,32 @@ int MaxHeap::extractMax(string print)
 
   if(print == "yes")
   {
+    cout << "After Max Extraction:" << endl;
     printMaxHeap();
   }
 
+  currentSize -= 1; // removes one from current size
+
   return maxCost;
+}
+
+// increase the cost of a project and sort to be max heap
+void MaxHeap::increaseKey(int index, int newCost, string print)
+{
+  if(print == "yes")
+  {
+    cout << "Before Max Extraction:" << endl;
+    printMaxHeap();
+  }
+
+  projectList[index].cost = newCost; // changes the cost of project at index with new cost
+  maxHeapify(projectList, index);
+
+  if(print == "yes")
+  {
+    cout << "After Max Extraction:" << endl;
+    printMaxHeap();
+  }
 }
 
 // Prints the max heap
