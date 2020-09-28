@@ -81,10 +81,10 @@ void MaxHeap::create(int n)
     maxSize = n;
 
     // Allocated memory for the Project array, sets to size maxSize
-    projectList = new Project[maxSize];
+    projectList = new Project[maxSize + 1];
 
     // fills project with default data so array isn't garbage
-    for(int i = 1; i <= maxSize; i++)
+    for(int i = 0; i < maxSize + 1; i++)
     {
       projectList[i].cost = 0;
       projectList[i].projName = "";
@@ -101,7 +101,7 @@ void MaxHeap::create(int n)
 // the max heap of the projectList. This needs to be done in O(n).
 void MaxHeap::buildMaxHeap(Project * otherList, int sizeOfOtherList)
 {
-  for(int i = 1; i < sizeOfOtherList; i++)
+  for(int i = 1; i <= sizeOfOtherList; i++)
   {
     projectList[i] = otherList[i];
   }
@@ -134,7 +134,7 @@ void MaxHeap::maxHeapInsert(string newProjectName, int newCost, string print)
   maxSize += 1; // max size will increase since we are adding a project
 
   projectList[maxSize] = newProject; // sets the last node equal to the new project obj
-  maxHeapify(projectList, maxSize); // Heapifys the last node we inserted
+  maxHeapify(projectList, currentSize/2); // Heapifys the last node we inserted
 
   if(print == "yes")
   {
@@ -202,7 +202,7 @@ void MaxHeap::increaseKey(int index, int newCost, string print)
   }
 
   projectList[index].cost = newCost; // changes the cost of project at index with new cost
-  maxHeapify(projectList, index);
+  buildMaxHeap(projectList, currentSize);
 
   if(print == "yes")
   {
