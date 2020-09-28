@@ -107,39 +107,62 @@ void MaxHeap::buildMaxHeap(Project * otherList, int sizeOfOtherList)
   }
 }
 
+// extract max returns the max cost of all projects and deletes project.
+int MaxHeap::extractMax(string print)
+{
+  int maxCost = projectList[1].cost; // stores the max cost assumes max heap property
+
+  if(print == "yes")
+  {
+    printMaxHeap();
+  }
+
+  projectList[1] = projectList[maxSize]; // sets last node to root node
+  maxSize -= 1; // sets size of heap to one smaller
+
+  maxHeapify(projectList, 1); // maxHeapify root node since value was changed
+
+  if(print == "yes")
+  {
+    printMaxHeap();
+  }
+
+  return maxCost;
+}
+
 // Prints the max heap
 void MaxHeap::printMaxHeap() 
+{
+  if (projectList == NULL) 
   {
-    if (projectList == NULL) 
+    cout << "The heap is empty" << endl;
+  }
+  else 
+  {
+    cout << "Max Size: " << maxSize << endl;
+    cout << "Current Size: " << currentSize << endl;
+    int nextline = 1;
+    if (projectList != NULL && currentSize > 0) 
     {
-        cout << "The heap is empty" << endl;
-    }
-    else 
-    {
-        cout << "Max Size: " << maxSize << endl;
-        cout << "Current Size: " << currentSize << endl;
-        int nextline = 1;
-        if (projectList != NULL && currentSize > 0) 
+        for (int i = 1; i <= currentSize; i = i*2) 
         {
-            for (int i = 1; i <= currentSize; i = i*2) 
-            {
-                int k = i;
-                while (k < i+nextline && k <= currentSize)
-                {
-                      cout << std::left << setw(8) << projectList[k].projName;
-                      k++;
-                }
-                cout << endl; 
-                k = i;
-                while (k < i+nextline && k <= currentSize)
-                {
-                      cout << std::left << setw(8) << projectList[k].cost;
-                      k++;
-                }
-              cout << endl; 
-              nextline *= 2;
-            }
+          int k = i;
+          while (k < i+nextline && k <= currentSize)
+          {
+                cout << std::left << setw(8) << projectList[k].projName;
+                k++;
+          }
+          cout << endl; 
+          k = i;
+          while (k < i+nextline && k <= currentSize)
+          {
+                cout << std::left << setw(8) << projectList[k].cost;
+                k++;
+          }
+          cout << endl; 
+          nextline *= 2;
         }
-        cout << endl;
     }
+    cout << endl;
+  }
 }

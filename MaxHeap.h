@@ -26,6 +26,7 @@ struct MaxHeap {
     void create(int n);
     void buildMaxHeap(Project * otherList, int sizeOfOtherList);
     void printMaxHeap();
+    int extractMax(string print);
 
 };
 
