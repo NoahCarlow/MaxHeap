@@ -119,7 +119,7 @@ void MaxHeap::maxHeapInsert(string newProjectName, int newCost, string print)
 
   if(print == "yes")
   {
-    cout << "Before Max Extraction:" << endl;
+    cout << "Before Insert:" << endl;
     printMaxHeap();
   }
 
@@ -131,7 +131,7 @@ void MaxHeap::maxHeapInsert(string newProjectName, int newCost, string print)
 
   if(print == "yes")
   {
-    cout << "After Max Extraction:" << endl;
+    cout << "After Insert:" << endl;
     printMaxHeap();
   }
   
@@ -140,6 +140,13 @@ void MaxHeap::maxHeapInsert(string newProjectName, int newCost, string print)
 // extract max returns the max cost of all projects and deletes project.
 int MaxHeap::extractMax(string print)
 {
+  //checks if the heap is empty
+  if(currentSize < 1)
+  {
+    cout << "Error: no element in heap.";
+    return;
+  }
+
   int maxCost = projectList[1].cost; // stores the max cost assumes max heap property
 
   if(print == "yes")
@@ -167,9 +174,23 @@ int MaxHeap::extractMax(string print)
 // increase the cost of a project and sort to be max heap
 void MaxHeap::increaseKey(int index, int newCost, string print)
 {
+  // checks if the heap is empty
+  if(currentSize < 1)
+  {
+    cout << "Error: no element in heap.";
+    return;
+  }
+
+  // checks if newCost is smaller than current cost
+  if(projectList[index].cost > newCost)
+  {
+    cout << "Error: New cost has to be larger than current cost.";
+    return;
+  }
+
   if(print == "yes")
   {
-    cout << "Before Max Extraction:" << endl;
+    cout << "Before Increase:" << endl;
     printMaxHeap();
   }
 
@@ -178,7 +199,7 @@ void MaxHeap::increaseKey(int index, int newCost, string print)
 
   if(print == "yes")
   {
-    cout << "After Max Extraction:" << endl;
+    cout << "After Increase:" << endl;
     printMaxHeap();
   }
 }
