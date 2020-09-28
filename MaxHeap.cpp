@@ -84,7 +84,7 @@ void MaxHeap::create(int n)
     projectList = new Project[maxSize];
 
     // fills project with default data so array isn't garbage
-    for(int i = 0; i < maxSize; i++)
+    for(int i = 1; i <= maxSize; i++)
     {
       projectList[i].cost = 0;
       projectList[i].projName = "";
@@ -101,7 +101,7 @@ void MaxHeap::create(int n)
 // the max heap of the projectList. This needs to be done in O(n).
 void MaxHeap::buildMaxHeap(Project * otherList, int sizeOfOtherList)
 {
-  for(int i = 0; i < sizeOfOtherList; i++)
+  for(int i = 1; i < sizeOfOtherList; i++)
   {
     projectList[i] = otherList[i];
   }
