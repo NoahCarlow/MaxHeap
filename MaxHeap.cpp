@@ -82,6 +82,13 @@ void MaxHeap::create(int n)
 
     // Allocated memory for the Project array, sets to size maxSize
     projectList = new Project[maxSize];
+
+    // fills project with default data so array isn't garbage
+    for(int i = 0; i < maxSize; i++)
+    {
+      projectList[i].cost = 0;
+      projectList[i].projName = "";
+    }
   }
   else
   {
