@@ -13,6 +13,7 @@ int main() {
     string command, newProjName, printCommand;
 
     //declare variables
+    MaxHeap *myHeap;
 
 
     while (true) {
@@ -27,12 +28,28 @@ int main() {
 
                 return 0;
          }
+
          else if (command == "insert")
          {
                 cout << "Next Command: " << command << " " << newProjName << " " << newCost << " " << printCommand << endl;
-                //TO BE COMPLETED
-                //...........
-         } 
+                myHeap->maxHeapInsert(newProjName, newCost, printCommand);
+                continue;
+         }
+
+         else if (command == "create")
+         {
+                cout << "Next Command: " << command << " " << n << " " << endl;
+                myHeap->create(n);
+                continue;
+         }
+
+         else if (command == "print")
+         {
+                cout << "Next Command: " << command << " " << endl;
+                myHeap->printMaxHeap();
+                continue;
+         }
+
          else
          {
                 break;
@@ -70,12 +87,16 @@ string nextCommand(int * n, int * index, int * newCost, string * printCommand, s
 
         //COMPLETE OTHER CASES
        
-        if ( ..... ) {
-            .....
+        if (command == "create") {
+            cin >> *n;
+            break;
+        }
+
+        if(command == "print") {
+            cin >> *printCommand;
+            break;
         }
         
-
-
 
         cout << "Invalid command" << endl;
     }

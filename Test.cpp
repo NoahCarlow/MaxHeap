@@ -7,12 +7,11 @@ using namespace std;
 
 int main()
 {
-    MaxHeap test;
-    test.create(5);
-    test.printMaxHeap();
+    MaxHeap *test;
+    test->create(5);
+    test->printMaxHeap();
 
-    Project *projectList;
-
-    test.buildMaxHeap(projectList, 4);
-    test.printMaxHeap();
+    int num;
+    cin >> num;
+    cout << "test";
 }

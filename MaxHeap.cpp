@@ -81,10 +81,10 @@ void MaxHeap::create(int n)
     maxSize = n;
 
     // Allocated memory for the Project array, sets to size maxSize
-    projectList = new Project[maxSize + 1];
+    projectList = new Project[maxSize + 1]; // array is set one size bigger to take into account 0 index being NULL
 
     // fills project with default data so array isn't garbage
-    for(int i = 0; i < maxSize + 1; i++)
+    for(int i = 0; i < maxSize + 1; i++) // we go to maxSize + 1 because we want our root node at 1 and 0 index to be NULL
     {
       projectList[i].cost = 0;
       projectList[i].projName = "";
@@ -92,7 +92,7 @@ void MaxHeap::create(int n)
   }
   else
   {
-    cout << "Error: size has to be a positive integer.";
+    cout << "Error: size has to be a positive integer.\n";
   }
 }
 
@@ -151,7 +151,7 @@ int MaxHeap::extractMax(string print)
   if(currentSize < 1)
   {
     cout << "Error: no element in heap.";
-    return;
+    return 1;
   }
 
   int maxCost = projectList[1].cost; // stores the max cost assumes max heap property
