@@ -1,0 +1,11 @@
+10
+ProjC 2
+ProjK 4
+ProjPP 11
+ProjX 8
+ProjYZ 10
+ProjT 49
+ProjOK 17
+ProjD 250
+Proj5 13
+SuperProj 32

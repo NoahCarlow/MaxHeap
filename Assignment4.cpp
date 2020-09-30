@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <sstream>
 #include "MaxHeap.h"
 
 using namespace std;
@@ -64,6 +65,30 @@ int main() {
                 continue;
          }
 
+         else if(command == "fileread") {
+             cout << "Next Command: " << command << " " << endl;
+
+             ifstream file("heapInfo.txt");
+             string fileLine;
+             string name;
+             string key;
+             int updateCost;
+             int i = 0;
+
+             while (getline(file, fileLine)) {
+                stringstream ss(fileLine);
+                getline(ss, name, ' ');
+                getline(ss, key, '\n');
+
+                istringstream(key) >> updateCost;
+                i++;
+                if (i > 1) {
+                    myHeap.maxHeapInsert(name, updateCost, "no");
+                }
+             }
+             continue;
+         }
+
          else
          {
                 break;
@@ -120,6 +145,10 @@ string nextCommand(int * n, int * index, int * newCost, string * printCommand, s
             cin >> *index;
             cin >> *newCost;
             cin >> *printCommand;
+            break;
+        }
+        
+        if(command == "fileread") {
             break;
         }
         
