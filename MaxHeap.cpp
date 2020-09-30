@@ -159,66 +159,71 @@ void MaxHeap::maxHeapInsert(string newProjectName, int newCost, string print)
 // extract max returns the max cost of all projects and deletes project.
 int MaxHeap::extractMax(string print)
 {
+  int maxCost = 0;
   //checks if the heap is empty
-  if(currentSize < 1)
+  if(maxSize == 0)
   {
-    cout << "Error: no element in heap.";
+    cout << "Error: heap not created" << endl;
     return 1;
   }
-
-  int maxCost = projectList[1].cost; // stores the max cost assumes max heap property
-
-  if(print == "yes")
+  else
   {
-    cout << "Before Max Extraction:" << endl;
-    printMaxHeap();
+    maxCost = projectList[1].cost; // stores the max cost assumes max heap property
+
+    if(print == "yes")
+    {
+      cout << "Before Max Extraction:" << endl;
+      printMaxHeap();
+    }
+
+    currentSize--; // removes one from current size
+    projectList[1] = projectList[currentSize + 1]; // sets last node to root node
+
+    buildMaxHeap(projectList, currentSize); // maxHeapify root node since value was changed
+
+    if(print == "yes")
+    {
+      cout << "After Max Extraction:" << endl;
+      printMaxHeap();
+      cout << "Extract Max = " << maxCost << endl;
+    }
+
+    return maxCost;
   }
-
-  currentSize--; // removes one from current size
-  projectList[1] = projectList[currentSize + 1]; // sets last node to root node
-
-  buildMaxHeap(projectList, currentSize); // maxHeapify root node since value was changed
-
-  if(print == "yes")
-  {
-    cout << "After Max Extraction:" << endl;
-    printMaxHeap();
-    cout << "Extract Max = " << maxCost << endl;
-  }
-
-  return maxCost;
 }
 
 // increase the cost of a project and sort to be max heap
 void MaxHeap::increaseKey(int index, int newCost, string print)
 {
   // checks if the heap is empty
-  if(currentSize < 1)
+  if(maxSize == 0)
   {
-    cout << "Error: no element in heap." << endl;
+    cout << "Error: heap not created" << endl;
     return;
   }
-
-  // checks if newCost is smaller than current cost
-  if(projectList[index].cost > newCost)
+  else
   {
-    cout << "Error: New cost has to be larger than current cost." << endl;
-    return;
-  }
+    // checks if newCost is smaller than current cost
+    if(projectList[index].cost > newCost)
+    {
+      cout << "Error: New cost has to be larger than current cost." << endl;
+      return;
+    }
 
-  if(print == "yes")
-  {
-    cout << "Before Increase:" << endl;
-    printMaxHeap();
-  }
+    if(print == "yes")
+    {
+      cout << "Before Increase:" << endl;
+      printMaxHeap();
+    }
 
-  projectList[index].cost = newCost; // changes the cost of project at index with new cost
-  buildMaxHeap(projectList, currentSize);
+    projectList[index].cost = newCost; // changes the cost of project at index with new cost
+    buildMaxHeap(projectList, currentSize);
 
-  if(print == "yes")
-  {
-    cout << "After Increase:" << endl;
-    printMaxHeap();
+    if(print == "yes")
+    {
+      cout << "After Increase:" << endl;
+      printMaxHeap();
+    }
   }
 }
 

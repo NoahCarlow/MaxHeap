@@ -87,7 +87,11 @@ int main() {
                     i++;
                 }
                 else if (i >= 1) {
-                    if (sizeOfFile > myHeap.maxSize) {
+                    if (myHeap.maxSize == 0) {
+                        cout << "Error: heap not created" << endl;
+                        break;
+                    }
+                    else if (sizeOfFile > myHeap.maxSize) {
                         cout << "Error: array size exceed heap capacity" << endl;
                         break;
                     }
@@ -101,7 +105,7 @@ int main() {
 
          else
          {
-                break;
+            break;
           }
         }
 
