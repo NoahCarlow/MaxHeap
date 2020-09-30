@@ -161,6 +161,7 @@ int MaxHeap::extractMax(string print)
     printMaxHeap();
   }
 
+  currentSize--; // removes one from current size
   projectList[1] = projectList[currentSize + 1]; // sets last node to root node
 
   buildMaxHeap(projectList, currentSize); // maxHeapify root node since value was changed
@@ -169,10 +170,9 @@ int MaxHeap::extractMax(string print)
   {
     cout << "After Max Extraction:" << endl;
     printMaxHeap();
+    cout << "Extract Max = " << maxCost << endl;
   }
 
-  currentSize--; // removes one from current size
-  cout << "Extract Max = " + maxCost << endl;
   return maxCost;
 }
 
