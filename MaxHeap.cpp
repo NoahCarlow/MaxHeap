@@ -39,7 +39,7 @@ void MaxHeap::maxHeapify(Project * otherList, int index)
   int largest = 0;
 
   // boundary check and checks if left node is largest
-  if(l <= maxSize && otherList[l].cost > otherList[index].cost)
+  if(l <= currentSize && otherList[l].cost > otherList[index].cost)
   {
     largest = l;
   }
@@ -49,7 +49,7 @@ void MaxHeap::maxHeapify(Project * otherList, int index)
   }
 
   // boundary check and checks if right node is largest
-  if(r <= maxSize && otherList[r].cost > otherList[largest].cost)
+  if(r <= currentSize && otherList[r].cost > otherList[largest].cost)
   {
     largest = r;
   }
@@ -108,7 +108,7 @@ void MaxHeap::buildMaxHeap(Project * otherList, int sizeOfOtherList)
 
   int startingIndex = sizeOfOtherList/2;
 
-  for(int i = startingIndex; i >= 0; i--)
+  for(int i = startingIndex; i >= 1; i--)
   {
     maxHeapify(otherList, i);
   }
@@ -131,10 +131,9 @@ void MaxHeap::maxHeapInsert(string newProjectName, int newCost, string print)
   }
 
   currentSize += 1; // current size will increase since we are adding a project
-  maxSize += 1; // max size will increase since we are adding a project
 
-  projectList[maxSize] = newProject; // sets the last node equal to the new project obj
-  maxHeapify(projectList, currentSize/2); // Heapifys the last node we inserted
+  projectList[currentSize] = newProject; // sets the last node equal to the new project obj
+  buildMaxHeap(projectList, currentSize); // Heapifys the last node we inserted
 
   if(print == "yes")
   {
@@ -162,7 +161,7 @@ int MaxHeap::extractMax(string print)
     printMaxHeap();
   }
 
-  projectList[1] = projectList[maxSize]; // sets last node to root node
+  projectList[1] = projectList[maxSize + 1]; // sets last node to root node
   maxSize -= 1; // sets size of heap to one smaller
 
   maxHeapify(projectList, 1); // maxHeapify root node since value was changed
