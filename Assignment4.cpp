@@ -73,18 +73,31 @@ int main() {
              string name;
              string key;
              int updateCost;
+             int sizeOfFile;
              int i = 0;
 
              while (getline(file, fileLine)) {
+
+                // parses the data from the file
                 stringstream ss(fileLine);
                 getline(ss, name, ' ');
                 getline(ss, key, '\n');
 
+                // the purpose of this loop is that the size of the file is read from line one then the rest of the file is read and stored
                 istringstream(key) >> updateCost;
-                i++;
-                if (i > 1) {
-                    myHeap.maxHeapInsert(name, updateCost, "no");
+                if (i < 1) {
+                    istringstream(name) >> sizeOfFile;
+                    i++;
                 }
+                else if (i >= 1) {
+                    if (sizeOfFile > myHeap.maxSize) {
+                        cout << "Error: array size exceed heap capacity." << endl;
+                        break;
+                    }
+                    else {
+                        myHeap.maxHeapInsert(name, updateCost, "no");
+                    }
+                } 
              }
              continue;
          }
