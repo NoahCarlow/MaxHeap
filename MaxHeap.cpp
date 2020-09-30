@@ -112,35 +112,48 @@ void MaxHeap::buildMaxHeap(Project * otherList, int sizeOfOtherList)
   {
     maxHeapify(otherList, i);
   }
-
   currentSize = sizeOfOtherList; // sets the current size
+
+  delete otherList;
 }
 
 // insert new project
 void MaxHeap::maxHeapInsert(string newProjectName, int newCost, string print)
 {
-  Project newProject; // creates new project
-
-  newProject.cost = newCost;
-  newProject.projName = newProjectName;
-
-  if(print == "yes")
+  // checks if heap has been created if not then maxHeapInsert wont run
+  if(maxSize == 0)
   {
-    cout << "Before Insert:" << endl;
-    printMaxHeap();
+    cout << "Error: heap not created" << endl;
   }
-
-  currentSize += 1; // current size will increase since we are adding a project
-
-  projectList[currentSize] = newProject; // sets the last node equal to the new project obj
-  buildMaxHeap(projectList, currentSize); // Heapifys the last node we inserted
-
-  if(print == "yes")
+  else
   {
-    cout << "After Insert:" << endl;
-    printMaxHeap();
+    if (currentSize == maxSize)
+    {
+      // TODO PWER OF 2 THING HERE
+    }
+
+    Project newProject; // creates new project
+
+    newProject.cost = newCost;
+    newProject.projName = newProjectName;
+
+    if(print == "yes")
+    {
+      cout << "Before Insert:" << endl;
+      printMaxHeap();
+    }
+
+    currentSize += 1; // current size will increase since we are adding a project
+
+    projectList[currentSize] = newProject; // sets the last node equal to the new project obj
+    buildMaxHeap(projectList, currentSize); // Heapifys the last node we inserted
+
+    if(print == "yes")
+    {
+      cout << "After Insert:" << endl;
+      printMaxHeap();
+    }
   }
-  
 }
 
 // extract max returns the max cost of all projects and deletes project.

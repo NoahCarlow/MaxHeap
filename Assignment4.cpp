@@ -25,9 +25,6 @@ int main() {
         if (command == "quit")
          {
                 cout << "Next Command: " << command << endl;
-                cout << "Next Command: " << command << " " << newProjName << " " << newCost << " " << printCommand << endl;
-                //TO BE COMPLETED
-                //...........
 
                 return 0;
          }
@@ -91,7 +88,7 @@ int main() {
                 }
                 else if (i >= 1) {
                     if (sizeOfFile > myHeap.maxSize) {
-                        cout << "Error: array size exceed heap capacity." << endl;
+                        cout << "Error: array size exceed heap capacity" << endl;
                         break;
                     }
                     else {
@@ -166,7 +163,7 @@ string nextCommand(int * n, int * index, int * newCost, string * printCommand, s
         }
         
 
-        cout << "Invalid command" << endl;
+        cout << "Error: invalid command" << endl;
     }
     return command;
 }
