@@ -38,32 +38,32 @@ int main() {
 
          else if (command == "create")
          {
-                cout << "Next Command: " << command << " " << n << " " << endl;
+                cout << "Next Command: " << command << " " << n << endl;
                 myHeap.create(n);
                 continue;
          }
 
          else if (command == "print")
          {
-                cout << "Next Command: " << command << " " << endl;
+                cout << "Next Command: " << command << endl;
                 myHeap.printMaxHeap();
                 continue;
          }
 
          else if (command == "extractmax") {
-                cout << "Next Command: " << command << " " << printCommand << " " << endl;
+                cout << "Next Command: " << command << " " << printCommand << endl;
                 myHeap.extractMax(printCommand);
                 continue;
          }
 
          else if (command == "increase") {
-                cout << "Next Command: " << command << " " << index << " " << newCost << " " << printCommand << " " << endl;
+                cout << "Next Command: " << command << " " << index << " " << newCost << " " << printCommand << endl;
                 myHeap.increaseKey(index, newCost, printCommand);
                 continue;
          }
 
          else if(command == "fileread") {
-             cout << "Next Command: " << command << " " << endl;
+             cout << "Next Command: " << command << endl;
 
              ifstream file("heapInfo.txt");
              string fileLine;
