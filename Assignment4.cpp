@@ -31,8 +31,15 @@ int main() {
 
          else if (command == "insert")
          {
-                cout << "Next Command: " << command << " " << newProjName << " " << newCost << " " << printCommand << endl;
-                myHeap.maxHeapInsert(newProjName, newCost, printCommand);
+                if (printCommand == "yes" || printCommand == "no")
+                {
+                    cout << "Next Command: " << command << " " << newProjName << " " << newCost << " " << printCommand << endl;
+                    myHeap.maxHeapInsert(newProjName, newCost, printCommand);
+                }
+                else
+                {
+                    cout << "Error: invalid print command" << endl;
+                }
                 continue;
          }
 
@@ -50,15 +57,35 @@ int main() {
                 continue;
          }
 
-         else if (command == "extractmax") {
-                cout << "Next Command: " << command << " " << printCommand << endl;
-                myHeap.extractMax(printCommand);
+         else if (command == "extractmax") 
+         {
+                if (printCommand == "yes" || printCommand == "no")
+                {
+                    cout << "Next Command: " << command << " " << printCommand << endl;
+                    myHeap.extractMax(printCommand);
+                }
+                else
+                {
+                    cout << "Error: invalid print command" << endl;
+                }
                 continue;
          }
 
-         else if (command == "increase") {
-                cout << "Next Command: " << command << " " << index << " " << newCost << " " << printCommand << endl;
-                myHeap.increaseKey(index, newCost, printCommand);
+         else if (command == "increase") 
+         {
+                if ((printCommand == "yes" || printCommand == "no") && index > 0)
+                {
+                    cout << "Next Command: " << command << " " << index << " " << newCost << " " << printCommand << endl;
+                    myHeap.increaseKey(index, newCost, printCommand);
+                }
+                else if (index <= 0)
+                {
+                    cout << "Error: invalid index" << endl;
+                }
+                else
+                {
+                    cout << "Error: invalid print command" << endl;
+                }
                 continue;
          }
 
@@ -92,7 +119,7 @@ int main() {
                         break;
                     }
                     else if (sizeOfFile > myHeap.maxSize) {
-                        cout << "Error: array size exceed heap capacity" << endl;
+                        cout << "Error: array size exceeds heap capacity" << endl;
                         break;
                     }
                     else {

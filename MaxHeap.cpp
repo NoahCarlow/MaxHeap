@@ -74,7 +74,7 @@ void MaxHeap::maxHeapify(Project * otherList, int index)
 
 void MaxHeap::create(int n)
 {
-  if(n > 0)
+  if(n >= 0)
   {
     // Initalizes properties of projectList
     currentSize = 0;
@@ -92,7 +92,7 @@ void MaxHeap::create(int n)
   }
   else
   {
-    cout << "Error: size has to be a positive integer.\n";
+    cout << "Error: invalid heap capacity\n";
   }
 }
 
