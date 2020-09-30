@@ -161,10 +161,9 @@ int MaxHeap::extractMax(string print)
     printMaxHeap();
   }
 
-  projectList[1] = projectList[maxSize + 1]; // sets last node to root node
-  maxSize -= 1; // sets size of heap to one smaller
+  projectList[1] = projectList[currentSize + 1]; // sets last node to root node
 
-  maxHeapify(projectList, 1); // maxHeapify root node since value was changed
+  buildMaxHeap(projectList, currentSize); // maxHeapify root node since value was changed
 
   if(print == "yes")
   {
@@ -172,8 +171,8 @@ int MaxHeap::extractMax(string print)
     printMaxHeap();
   }
 
-  currentSize -= 1; // removes one from current size
-
+  currentSize--; // removes one from current size
+  cout << "Extract Max = " + maxCost << endl;
   return maxCost;
 }
 
@@ -183,14 +182,14 @@ void MaxHeap::increaseKey(int index, int newCost, string print)
   // checks if the heap is empty
   if(currentSize < 1)
   {
-    cout << "Error: no element in heap.";
+    cout << "Error: no element in heap." << endl;
     return;
   }
 
   // checks if newCost is smaller than current cost
   if(projectList[index].cost > newCost)
   {
-    cout << "Error: New cost has to be larger than current cost.";
+    cout << "Error: New cost has to be larger than current cost." << endl;
     return;
   }
 

@@ -52,6 +52,18 @@ int main() {
                 continue;
          }
 
+         else if (command == "extractmax") {
+                cout << "Next Command: " << command << " " << printCommand << " " << endl;
+                myHeap.extractMax(printCommand);
+                continue;
+         }
+
+         else if (command == "increase") {
+                cout << "Next Command: " << command << " " << index << " " << newCost << " " << printCommand << " " << endl;
+                myHeap.increaseKey(index, newCost, printCommand);
+                continue;
+         }
+
          else
          {
                 break;
@@ -95,6 +107,18 @@ string nextCommand(int * n, int * index, int * newCost, string * printCommand, s
         }
 
         if(command == "print") {
+            cin >> *printCommand;
+            break;
+        }
+
+        if(command == "extractmax") {
+            cin >> *printCommand;
+            break;
+        }
+
+        if(command == "increase") {
+            cin >> *index;
+            cin >> *newCost;
             cin >> *printCommand;
             break;
         }
