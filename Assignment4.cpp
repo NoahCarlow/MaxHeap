@@ -71,9 +71,11 @@ int main() {
                     if (myHeap.maxSize == -1) {
                         cout << "Error: heap not created" << endl;
                     }
-                    if(myHeap.currentSize == 0)
+                    else if(myHeap.currentSize == 0 && myHeap.maxSize > -1)
                     {
-                        cout << "Error: heap empty" << endl;
+                        cout << myHeap.maxSize;
+                        cout << "HELLO";
+                        cout << "Error: heap empty111" << endl;
                     }
                     else
                     {
