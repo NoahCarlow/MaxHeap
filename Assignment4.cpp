@@ -72,7 +72,7 @@ int main() {
                         cout << "Error: heap not created" << endl;
                     }
                     else if(myHeap.currentSize == 0) {
-                        cout << "Error: heap empty";
+                        cout << "Error: heap empty" << endl;
                     }
                     else
                     {

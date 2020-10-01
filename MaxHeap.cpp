@@ -172,13 +172,13 @@ void MaxHeap::maxHeapInsert(string newProjectName, int newCost, string print)
     }
     else
     {
-      currentSize += 1; // current size will increase since we are adding a project
 
       if(print == "yes")
       {
         cout << "Before insert operation:" << endl;
         printMaxHeap();
       }
+      currentSize += 1; // current size will increase since we are adding a project
     }
 
     Project newProject; // creates new project
