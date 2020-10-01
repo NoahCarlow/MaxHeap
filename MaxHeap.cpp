@@ -201,16 +201,39 @@ void MaxHeap::maxHeapInsert(string newProjectName, int newCost, string print)
 int MaxHeap::extractMax(string print)
 {
   int maxCost = 0;
-  if(currentSize == 0)
-  {
-    cout << "Error: heap empty" << endl;
-    return 1;
-  }
   //checks if the heap is empty
   if(maxSize < 0)
   {
     cout << "Error: heap not created" << endl;
     return 1;
+  }
+  if(currentSize == 0)
+  {
+    cout << "Error: heap empty" << endl;
+    return 1;
+  }
+  else if(currentSize == 1)
+  {
+    maxCost = projectList[1].cost; // stores the max cost assumes max heap property
+
+    if(print == "yes")
+    {
+      cout << "Before extract max operation:" << endl;
+      printMaxHeap();
+    }
+
+    currentSize--; // removes one from current size
+    projectList[1].cost = 0;
+    projectList[1].projName = "";
+
+    if(print == "yes")
+    {
+      cout << "After extract max operation:" << endl;
+      printMaxHeap();
+    }
+    cout << "Extract Max = " << maxCost << endl;
+
+    return maxCost;
   }
   else
   {
@@ -223,6 +246,7 @@ int MaxHeap::extractMax(string print)
     }
 
     currentSize--; // removes one from current size
+
     projectList[1] = projectList[currentSize + 1]; // sets last node to root node
 
     buildMaxHeap(projectList, currentSize); // maxHeapify root node since value was changed
