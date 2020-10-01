@@ -2,7 +2,7 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
-#include <vector>
+#include <math.h>
 #include "MaxHeap.h"
 
 using namespace std;
@@ -121,7 +121,7 @@ void MaxHeap::buildMaxHeap(Project * otherList, int sizeOfOtherList)
 void MaxHeap::maxHeapInsert(string newProjectName, int newCost, string print)
 {
   // checks if heap has been created if not then maxHeapInsert wont run
-  if(maxSize == 0)
+  if(maxSize < 0)
   {
     cout << "Error: heap not created" << endl;
   }
@@ -129,21 +129,62 @@ void MaxHeap::maxHeapInsert(string newProjectName, int newCost, string print)
   {
     if (currentSize == maxSize)
     {
-      // TODO PWER OF 2 THING HERE
+      if(print == "yes")
+      {
+        cout << "Before Insert:" << endl;
+        printMaxHeap();
+      }
+
+      int exponent = 0;
+      while(pow(2, exponent) <= maxSize) // iterates exponent to get correct size to increase the heap by
+      {
+        exponent += 1;
+      }
+
+      maxSize = pow(2, exponent);
+      int storeCurrentSize = currentSize;
+
+      Project * increaseProjectList;
+      increaseProjectList = new Project[maxSize + 1]; // create new array with bigger size
+
+      // initalizes data into new sized project list
+      for(int i = 0; i < maxSize + 1; i++) // we go to maxSize + 1 because we want our root node at 1 and 0 index to be NULL
+      {
+        increaseProjectList[i].cost = 0;
+        increaseProjectList[i].projName = "";
+      }
+
+      // copies the content of current project list into the bigger sized list
+      for(int i = 1; i <= currentSize; i++)
+      {
+        increaseProjectList[i] = projectList[i];
+      }
+      create(maxSize);
+      currentSize = storeCurrentSize + 1;
+
+      // copies data back into projectList after creating new array size
+      for(int i = 1; i < currentSize; i++)
+      {
+        projectList[i] = increaseProjectList[i];
+      }
+
+      delete increaseProjectList;
+    }
+    else
+    {
+      currentSize += 1; // current size will increase since we are adding a project
+
+      if(print == "yes")
+      {
+        cout << "Before Insert:" << endl;
+        printMaxHeap();
+      }
     }
 
     Project newProject; // creates new project
 
     newProject.cost = newCost;
     newProject.projName = newProjectName;
-
-    if(print == "yes")
-    {
-      cout << "Before Insert:" << endl;
-      printMaxHeap();
-    }
-
-    currentSize += 1; // current size will increase since we are adding a project
 
     projectList[currentSize] = newProject; // sets the last node equal to the new project obj
     buildMaxHeap(projectList, currentSize); // Heapifys the last node we inserted
@@ -161,7 +202,7 @@ int MaxHeap::extractMax(string print)
 {
   int maxCost = 0;
   //checks if the heap is empty
-  if(maxSize == 0)
+  if(maxSize < 0)
   {
     cout << "Error: heap not created" << endl;
     return 1;
@@ -196,7 +237,7 @@ int MaxHeap::extractMax(string print)
 void MaxHeap::increaseKey(int index, int newCost, string print)
 {
   // checks if the heap is empty
-  if(maxSize == 0)
+  if(maxSize < 0)
   {
     cout << "Error: heap not created" << endl;
     return;
@@ -230,7 +271,7 @@ void MaxHeap::increaseKey(int index, int newCost, string print)
 // Prints the max heap
 void MaxHeap::printMaxHeap() 
 {
-  if (projectList == NULL) 
+  if (maxSize < 0) 
   {
     cout << "The heap is empty" << endl;
   }

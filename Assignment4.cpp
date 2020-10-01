@@ -16,7 +16,7 @@ int main() {
     //declare variables
     MaxHeap myHeap;
     myHeap.currentSize = 0;
-    myHeap.maxSize = 0;
+    myHeap.maxSize = -1; // value starts at -1 for conditions on heap being empty in MaxHeap.cpp
 
 
     while (true) {
