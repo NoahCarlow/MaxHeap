@@ -90,7 +90,13 @@ int main() {
                 }
                 else
                 {
-                    cout << "Error: invalid print command" << endl;
+                    if (myHeap.maxSize == -1) {
+                        cout << "Error: heap not created" << endl;
+                    }
+                    else
+                    {
+                        cout << "Error: invalid print command" << endl;
+                    }
                 }
                 continue;
          }
