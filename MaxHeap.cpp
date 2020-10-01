@@ -114,7 +114,7 @@ void MaxHeap::buildMaxHeap(Project * otherList, int sizeOfOtherList)
   }
   currentSize = sizeOfOtherList; // sets the current size
 
-  //delete otherList;
+  delete otherList;
 }
 
 // insert new project
