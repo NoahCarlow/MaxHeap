@@ -114,7 +114,7 @@ void MaxHeap::buildMaxHeap(Project * otherList, int sizeOfOtherList)
   }
   currentSize = sizeOfOtherList; // sets the current size
 
-  delete otherList;
+  //delete otherList;
 }
 
 // insert new project
@@ -168,7 +168,7 @@ void MaxHeap::maxHeapInsert(string newProjectName, int newCost, string print)
         projectList[i] = increaseProjectList[i];
       }
 
-      delete increaseProjectList;
+      //delete increaseProjectList;
     }
     else
     {
