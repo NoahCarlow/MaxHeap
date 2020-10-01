@@ -201,15 +201,15 @@ void MaxHeap::maxHeapInsert(string newProjectName, int newCost, string print)
 int MaxHeap::extractMax(string print)
 {
   int maxCost = 0;
+  if(currentSize == 0)
+  {
+    cout << "Error: heap empty" << endl;
+    return 1;
+  }
   //checks if the heap is empty
   if(maxSize < 0)
   {
     cout << "Error: heap not created" << endl;
-    return 1;
-  }
-  if(currentSize == 0)
-  {
-    cout << "Error: heap empty" << endl;
     return 1;
   }
   else

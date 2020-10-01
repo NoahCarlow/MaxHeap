@@ -71,6 +71,10 @@ int main() {
                     if (myHeap.maxSize == -1) {
                         cout << "Error: heap not created" << endl;
                     }
+                    if(myHeap.currentSize == 0)
+                    {
+                        cout << "Error: heap empty" << endl;
+                    }
                     else
                     {
                         cout << "Error: invalid print command" << endl;
