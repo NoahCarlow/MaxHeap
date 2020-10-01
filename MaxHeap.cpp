@@ -131,7 +131,7 @@ void MaxHeap::maxHeapInsert(string newProjectName, int newCost, string print)
     {
       if(print == "yes")
       {
-        cout << "Before Insert:" << endl;
+        cout << "Before insert operation:" << endl;
         printMaxHeap();
       }
 
@@ -176,7 +176,7 @@ void MaxHeap::maxHeapInsert(string newProjectName, int newCost, string print)
 
       if(print == "yes")
       {
-        cout << "Before Insert:" << endl;
+        cout << "Before insert operation:" << endl;
         printMaxHeap();
       }
     }
@@ -191,7 +191,7 @@ void MaxHeap::maxHeapInsert(string newProjectName, int newCost, string print)
 
     if(print == "yes")
     {
-      cout << "After Insert:" << endl;
+      cout << "After insert operation:" << endl;
       printMaxHeap();
     }
   }
@@ -213,7 +213,7 @@ int MaxHeap::extractMax(string print)
 
     if(print == "yes")
     {
-      cout << "Before Max Extraction:" << endl;
+      cout << "Before extract max operation:" << endl;
       printMaxHeap();
     }
 
@@ -224,7 +224,7 @@ int MaxHeap::extractMax(string print)
 
     if(print == "yes")
     {
-      cout << "After Max Extraction:" << endl;
+      cout << "After extract max operation:" << endl;
       printMaxHeap();
       cout << "Extract Max = " << maxCost << endl;
     }
@@ -247,13 +247,13 @@ void MaxHeap::increaseKey(int index, int newCost, string print)
     // checks if newCost is smaller than current cost
     if(projectList[index].cost > newCost)
     {
-      cout << "Error: New cost has to be larger than current cost." << endl;
+      cout << "Error: new cost is smaller than current cost" << endl;
       return;
     }
 
     if(print == "yes")
     {
-      cout << "Before Increase:" << endl;
+      cout << "Before increase operation:" << endl;
       printMaxHeap();
     }
 
@@ -262,7 +262,7 @@ void MaxHeap::increaseKey(int index, int newCost, string print)
 
     if(print == "yes")
     {
-      cout << "After Increase:" << endl;
+      cout << "After increase operation:" << endl;
       printMaxHeap();
     }
   }
