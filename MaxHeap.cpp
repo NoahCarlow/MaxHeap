@@ -110,7 +110,7 @@ void MaxHeap::buildMaxHeap(Project * otherList, int sizeOfOtherList)
 
   for(int i = startingIndex; i >= 1; i--)
   {
-    maxHeapify(otherList, i);
+    maxHeapify(projectList, i);
   }
   currentSize = sizeOfOtherList; // sets the current size
 
@@ -226,8 +226,8 @@ int MaxHeap::extractMax(string print)
     {
       cout << "After extract max operation:" << endl;
       printMaxHeap();
-      cout << "Extract Max = " << maxCost << endl;
     }
+    cout << "Extract Max = " << maxCost << endl;
 
     return maxCost;
   }

@@ -81,12 +81,12 @@ int main() {
 
          else if (command == "increase") 
          {
-                if ((printCommand == "yes" || printCommand == "no") && index > 0)
+                if ((printCommand == "yes" || printCommand == "no") && index > 0 && index <= myHeap.currentSize)
                 {
                     cout << "Next Command: " << command << " " << index << " " << newCost << " " << printCommand << endl;
                     myHeap.increaseKey(index, newCost, printCommand);
                 }
-                else if (index <= 0)
+                else if (index <= 0 || index > myHeap.currentSize)
                 {
                     cout << "Next Command: " << command << " " << index << " " << newCost << " " << printCommand << endl;
                     cout << "Error: invalid index" << endl;
@@ -116,6 +116,9 @@ int main() {
              int sizeOfFile;
              int i = 0;
 
+            // temp array to store file read content
+             Project * tempArray;
+
              while (getline(file, fileLine)) {
 
                 // parses the data from the file
@@ -128,6 +131,9 @@ int main() {
                 if (i < 1) {
                     istringstream(name) >> sizeOfFile;
                     i++;
+
+                    // sets temp array equal to size of file read
+                    tempArray = new Project[sizeOfFile + 1];
                 }
                 else if (i >= 1) {
                     if (myHeap.maxSize == -1) {
@@ -139,10 +145,15 @@ int main() {
                         break;
                     }
                     else {
-                        myHeap.maxHeapInsert(name, updateCost, "no");
+                        tempArray[i].cost = updateCost;
+                        tempArray[i].projName = name;
+                        cout << i;
+                        i++;
+                        //myHeap.maxHeapInsert(name, updateCost, "no");
                     }
-                } 
+                }
              }
+             myHeap.buildMaxHeap(tempArray, sizeOfFile);
              continue;
          }
 
