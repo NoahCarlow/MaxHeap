@@ -207,6 +207,11 @@ int MaxHeap::extractMax(string print)
     cout << "Error: heap not created" << endl;
     return 1;
   }
+  if(currentSize == 0)
+  {
+    cout << "Error: heap empty" << endl;
+    return 1;
+  }
   else
   {
     maxCost = projectList[1].cost; // stores the max cost assumes max heap property
