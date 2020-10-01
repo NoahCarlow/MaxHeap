@@ -116,9 +116,6 @@ int main() {
              int sizeOfFile;
              int i = 0;
 
-            // temp array to store file read content
-             Project * tempArray;
-
              while (getline(file, fileLine)) {
 
                 // parses the data from the file
@@ -131,9 +128,6 @@ int main() {
                 if (i < 1) {
                     istringstream(name) >> sizeOfFile;
                     i++;
-
-                    // sets temp array equal to size of file read
-                    tempArray = new Project[sizeOfFile + 1];
                 }
                 else if (i >= 1) {
                     if (myHeap.maxSize == -1) {
@@ -145,15 +139,10 @@ int main() {
                         break;
                     }
                     else {
-                        tempArray[i].cost = updateCost;
-                        tempArray[i].projName = name;
-                        cout << i;
-                        i++;
-                        //myHeap.maxHeapInsert(name, updateCost, "no");
+                        myHeap.maxHeapInsert(name, updateCost, "no");
                     }
                 }
              }
-             myHeap.buildMaxHeap(tempArray, sizeOfFile);
              continue;
          }
 
