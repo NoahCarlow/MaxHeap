@@ -60,7 +60,7 @@ int main() {
 
          else if (command == "extractmax") 
          {
-                if ((printCommand == "yes" || printCommand == "no"))
+                if ((printCommand == "yes" || printCommand == "no") && myHeap.maxSize != -1)
                 {
                     cout << "Next Command: " << command << " " << printCommand << endl;
                     myHeap.extractMax(printCommand);
