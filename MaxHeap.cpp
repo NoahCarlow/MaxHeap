@@ -168,7 +168,7 @@ void MaxHeap::maxHeapInsert(string newProjectName, int newCost, string print)
         projectList[i] = increaseProjectList[i];
       }
 
-      delete[] increaseProjectList;
+      //delete[] increaseProjectList;
     }
     else
     {
