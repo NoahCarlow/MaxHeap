@@ -124,7 +124,7 @@ int main() {
             if (file.good()) {
                 getline(file, sizeOfFile);
             }
-            sizeOfFileInt = 10;
+            istringstream(sizeOfFile) >> sizeOfFileInt;
 
             if (myHeap.maxSize == -1) {
                 cout << "Error: heap not created" << endl;
@@ -141,8 +141,8 @@ int main() {
                     int cost1;
                     file >> tempArray[i].projName;
                     file >> cost;
-                    cout << "COST: " << cost << endl;
-                    cost1 = 500;
+                    istringstream(cost) >> cost1;
+                    cout << "COST: " << cost1 << endl;
                     tempArray[i].cost = cost1;
                 }
                 myHeap = tempHeap;
