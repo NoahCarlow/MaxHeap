@@ -163,8 +163,6 @@ int main() {
     }
 }
 
-//The following is a partial program for readinng in the commands from the keyboard.
-//You need to add more code
 string nextCommand(int * n, int * index, int * newCost, string * printCommand, string * newProjName) 
 {
     string command = "?";
@@ -187,8 +185,6 @@ string nextCommand(int * n, int * index, int * newCost, string * printCommand, s
             cin >> *printCommand;
             break;
         }   
-
-        //COMPLETE OTHER CASES
        
         if (command == "create") {
             cin >> *n;

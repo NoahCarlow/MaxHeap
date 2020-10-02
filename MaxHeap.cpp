@@ -7,12 +7,6 @@
 
 using namespace std;
 
-// TO BE COMPLETED
-
-// TODO -create(int n) needs to allocate memory for the projectList using the 
-// parameter n, and also initialize the currentSize to 0, and the maxSize to the 
-// parameter n.
-
 // returns left node of parent node
 int MaxHeap::getLeftNode(int index)
 {
@@ -96,13 +90,10 @@ void MaxHeap::create(int n)
   }
 }
 
-// TODO -buildMaxHeap(Project * otherList, int sizeOfOtherList) needs to copy the 
-// parameter otherList which is an array of Project to the projectList, and build 
-// the max heap of the projectList. This needs to be done in O(n).
 void MaxHeap::buildMaxHeap(Project * otherList, int sizeOfOtherList)
 {
   currentSize = sizeOfOtherList; // sets the current size
-  
+
   for(int i = 1; i <= sizeOfOtherList; i++)
   {
     projectList[i] = otherList[i];
