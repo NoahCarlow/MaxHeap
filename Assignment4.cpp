@@ -92,18 +92,18 @@ int main() {
                 else if (index <= 0 || index > myHeap.currentSize)
                 {
                     cout << "Next Command: " << command << " " << index << " " << newCost << " " << printCommand << endl;
-                    cout << "Error: invalid index" << endl;
+                    if (myHeap.maxSize == -1) {
+                        cout << "Error: heap not created" << endl;
+                    }
+                    else {
+                        cout << "Error: invalid index" << endl;
+                    }
                 }
                 else
                 {
                     cout << "Next Command: " << command << " " << index << " " << newCost << " " << printCommand << endl;
-                    if (myHeap.maxSize == -1) {
-                        cout << "Error: heap not created" << endl;
-                    }
-                    else
-                    {
-                        cout << "Error: invalid print command" << endl;
-                    }
+                    cout << "Error: invalid print command" << endl;
+                    
                 }
                 continue;
          }
