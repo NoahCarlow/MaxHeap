@@ -89,7 +89,7 @@ int main() {
                     cout << "Next Command: " << command << " " << index << " " << newCost << " " << printCommand << endl;
                     myHeap.increaseKey(index, newCost, printCommand);
                 }
-                else if (index <= 0 || index > myHeap.currentSize)
+                else if (index < 0 || index > myHeap.currentSize)
                 {
                     cout << "Next Command: " << command << " " << index << " " << newCost << " " << printCommand << endl;
                     if (myHeap.maxSize == -1) {
