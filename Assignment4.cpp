@@ -124,7 +124,7 @@ int main() {
             if (file.good()) {
                 getline(file, sizeOfFile);
             }
-            sizeOfFileInt = stoi(sizeOfFile);
+            sizeOfFileInt = 10;
 
             if (myHeap.maxSize == -1) {
                 cout << "Error: heap not created" << endl;
@@ -142,7 +142,7 @@ int main() {
                     file >> tempArray[i].projName;
                     file >> cost;
                     cout << "COST: " << cost << endl;
-                    cost1 = 500;
+                    cost1 = stoi(cost);
                     tempArray[i].cost = cost1;
                 }
                 myHeap = tempHeap;
