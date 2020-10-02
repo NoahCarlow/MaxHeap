@@ -120,7 +120,10 @@ int main() {
             string cost;
             string sizeOfFile;
             int sizeOfFileInt;
+            int tempFileSize;
             MaxHeap tempHeap;
+
+            tempFileSize = myHeap.maxSize;
 
             Project * tempArray;
             if (file.good()) {
@@ -148,6 +151,7 @@ int main() {
                     tempArray[i].cost = cost1;
                 }
                 myHeap = tempHeap;
+                myHeap.maxSize = tempFileSize;
                 myHeap.buildMaxHeap(tempArray, sizeOfFileInt);
                 file.close();
             }
