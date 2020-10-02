@@ -125,6 +125,7 @@ int main() {
                 getline(file, sizeOfFile);
             }
             istringstream(sizeOfFile) >> sizeOfFileInt;
+            //cout << sizeOfFileInt;
 
             if (myHeap.maxSize == -1) {
                 cout << "Error: heap not created" << endl;
