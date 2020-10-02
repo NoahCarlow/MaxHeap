@@ -89,7 +89,11 @@ int main() {
                     cout << "Next Command: " << command << " " << index << " " << newCost << " " << printCommand << endl;
                     myHeap.increaseKey(index, newCost, printCommand);
                 }
-                else if (index < 0 || index > myHeap.currentSize)
+                else if (printCommand != "yes" || printCommand != "no") {
+                    cout << "Next Command: " << command << " " << index << " " << newCost << " " << printCommand << endl;
+                    cout << "Error: invalid print command" << endl;
+                }
+                else if (index <= 0 || index > myHeap.currentSize)
                 {
                     cout << "Next Command: " << command << " " << index << " " << newCost << " " << printCommand << endl;
                     if (myHeap.maxSize == -1) {
@@ -98,12 +102,6 @@ int main() {
                     else {
                         cout << "Error: invalid index" << endl;
                     }
-                }
-                else
-                {
-                    cout << "Next Command: " << command << " " << index << " " << newCost << " " << printCommand << endl;
-                    cout << "Error: invalid print command" << endl;
-                    
                 }
                 continue;
          }
