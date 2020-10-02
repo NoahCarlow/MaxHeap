@@ -112,7 +112,7 @@ int main() {
             cout << "Next Command: " << command << endl;
 
             ifstream file;
-            file.open("heapinfo.txt");
+            file.open("heapInfo.txt");
 
             string name;
             string cost;
