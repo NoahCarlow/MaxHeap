@@ -84,24 +84,28 @@ int main() {
 
          else if (command == "increase") 
          {
+                bool printTest = false;
+                if (printCommand == "yes" || printCommand == "no") {
+                    printTest = true;
+                }
                 if ((printCommand == "yes" || printCommand == "no") && index > 0 && index <= myHeap.currentSize)
                 {
+                    printTest = true;
                     cout << "Next Command: " << command << " " << index << " " << newCost << " " << printCommand << endl;
                     myHeap.increaseKey(index, newCost, printCommand);
                 }
-                else if (printCommand != "yes" || printCommand != "no") {
+                else if (myHeap.maxSize == -1) {
+                    cout << "Next Command: " << command << " " << index << " " << newCost << " " << printCommand << endl;
+                    cout << "Error: heap not created" << endl;
+                }
+                else if (printTest == false) {
                     cout << "Next Command: " << command << " " << index << " " << newCost << " " << printCommand << endl;
                     cout << "Error: invalid print command" << endl;
                 }
                 else if (index <= 0 || index > myHeap.currentSize)
                 {
                     cout << "Next Command: " << command << " " << index << " " << newCost << " " << printCommand << endl;
-                    if (myHeap.maxSize == -1) {
-                        cout << "Error: heap not created" << endl;
-                    }
-                    else {
-                        cout << "Error: invalid index" << endl;
-                    }
+                    cout << "Error: invalid index" << endl;
                 }
                 continue;
          }
