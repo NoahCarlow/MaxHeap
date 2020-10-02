@@ -143,7 +143,6 @@ int main() {
                     file >> tempArray[i].projName;
                     file >> cost;
                     istringstream(cost) >> cost1;
-                    cout << "COST: " << cost1 << endl;
                     tempArray[i].cost = cost1;
                 }
                 myHeap = tempHeap;
