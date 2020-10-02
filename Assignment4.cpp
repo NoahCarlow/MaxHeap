@@ -141,7 +141,8 @@ int main() {
                     int cost1;
                     file >> tempArray[i].projName;
                     file >> cost;
-                    cost1 = stoi(cost);
+                    cout << "COST: " << cost << endl;
+                    cost1 = 500;
                     tempArray[i].cost = cost1;
                 }
                 myHeap = tempHeap;
