@@ -110,6 +110,7 @@ int main() {
 
          else if(command == "fileread") {
             cout << "Next Command: " << command << endl;
+
             ifstream file;
             file.open("heapinfo.txt");
 
@@ -124,21 +125,30 @@ int main() {
                 getline(file, sizeOfFile);
             }
 
-            sizeOfFileInt = stoi(sizeOfFile);
-
-            tempHeap.create(sizeOfFileInt);
-            tempArray = new Project[sizeOfFileInt + 1];
-            
-            for(int i = 1; i <= sizeOfFileInt; i++) {
-                int cost1;
-                file >> tempArray[i].projName;
-                file >> cost;
-                cost1 = stoi(cost);
-                tempArray[i].cost = cost1;
+            if (myHeap.maxSize == -1) {
+                cout << "Error: heap not created" << endl;
             }
-            myHeap = tempHeap;
-            myHeap.buildMaxHeap(tempArray, sizeOfFileInt);
-            file.close();
+            else if (sizeOfFileInt > myHeap.maxSize) {
+                cout << "Error: array size exceeds heap capacity" << endl;
+            }
+            else
+            {
+                sizeOfFileInt = stoi(sizeOfFile);
+
+                tempHeap.create(sizeOfFileInt);
+                tempArray = new Project[sizeOfFileInt + 1];
+                
+                for(int i = 1; i <= sizeOfFileInt; i++) {
+                    int cost1;
+                    file >> tempArray[i].projName;
+                    file >> cost;
+                    cost1 = stoi(cost);
+                    tempArray[i].cost = cost1;
+                }
+                myHeap = tempHeap;
+                myHeap.buildMaxHeap(tempArray, sizeOfFileInt);
+                file.close();
+            }
             continue;
          }
 
