@@ -101,6 +101,8 @@ void MaxHeap::create(int n)
 // the max heap of the projectList. This needs to be done in O(n).
 void MaxHeap::buildMaxHeap(Project * otherList, int sizeOfOtherList)
 {
+  currentSize = sizeOfOtherList; // sets the current size
+  
   for(int i = 1; i <= sizeOfOtherList; i++)
   {
     projectList[i] = otherList[i];
@@ -112,7 +114,6 @@ void MaxHeap::buildMaxHeap(Project * otherList, int sizeOfOtherList)
   {
     maxHeapify(projectList, i);
   }
-  currentSize = sizeOfOtherList; // sets the current size
 
   //delete[] otherList;
 }

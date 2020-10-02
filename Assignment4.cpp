@@ -109,54 +109,42 @@ int main() {
          }
 
          else if(command == "fileread") {
-             cout << "Next Command: " << command << endl;
+            cout << "Next Command: " << command << endl;
+            ifstream file;
+            file.open("heapinfo.txt");
 
-             ifstream file("heapInfo.txt");
-             string fileLine;
-             string name;
-             string key;
-             int updateCost;
-             int sizeOfFile;
-             int i = 0;
+            string name;
+            string cost;
+            string sizeOfFile;
+            int sizeOfFileInt;
+            MaxHeap tempHeap;
 
-             while (getline(file, fileLine)) {
+            Project * tempArray;
+            if (file.good()) {
+                getline(file, sizeOfFile);
+            }
 
-                // parses the data from the file
-                stringstream ss(fileLine);
-                getline(ss, name, ' ');
-                getline(ss, key, '\n');
+            sizeOfFileInt = stoi(sizeOfFile);
 
-                // the purpose of this loop is that the size of the file is read from line one then the rest of the file is read and stored
-                istringstream(key) >> updateCost;
-                if (i < 1) {
-                    istringstream(name) >> sizeOfFile;
-                    i++;
-                }
-                else if (i >= 1) {
-                    if (myHeap.maxSize == -1) {
-                        cout << "Error: heap not created" << endl;
-                        break;
-                    }
-                    else if (sizeOfFile > myHeap.maxSize) {
-                        cout << "Error: array size exceeds heap capacity" << endl;
-                        break;
-                    }
-                    else {
-                        myHeap.maxHeapInsert(name, updateCost, "no");
-                    }
-                }
-             }
-             continue;
+            tempHeap.create(sizeOfFileInt);
+            tempArray = new Project[sizeOfFileInt + 1];
+            
+            for(int i = 1; i <= sizeOfFileInt; i++) {
+                int cost1;
+                file >> tempArray[i].projName;
+                file >> cost;
+                cost1 = stoi(cost);
+                tempArray[i].cost = cost1;
+            }
+            myHeap = tempHeap;
+            myHeap.buildMaxHeap(tempArray, sizeOfFileInt);
+            file.close();
+            continue;
          }
-
-         else
-         {
-            break;
-          }
-        }
 
         return 0;
     
+    }
 }
 
 //The following is a partial program for readinng in the commands from the keyboard.
