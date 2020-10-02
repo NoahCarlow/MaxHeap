@@ -89,7 +89,7 @@ int main() {
                     cout << "Next Command: " << command << " " << index << " " << newCost << " " << printCommand << endl;
                     myHeap.increaseKey(index, newCost, printCommand);
                 }
-                else if (index <= 0)
+                else if (index <= 0 || index > myHeap.currentSize)
                 {
                     cout << "Next Command: " << command << " " << index << " " << newCost << " " << printCommand << endl;
                     cout << "Error: invalid index" << endl;
