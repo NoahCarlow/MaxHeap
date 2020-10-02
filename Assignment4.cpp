@@ -124,6 +124,7 @@ int main() {
             if (file.good()) {
                 getline(file, sizeOfFile);
             }
+            sizeOfFileInt = stoi(sizeOfFile);
 
             if (myHeap.maxSize == -1) {
                 cout << "Error: heap not created" << endl;
@@ -133,8 +134,6 @@ int main() {
             }
             else
             {
-                sizeOfFileInt = stoi(sizeOfFile);
-
                 tempHeap.create(sizeOfFileInt);
                 tempArray = new Project[sizeOfFileInt + 1];
                 
